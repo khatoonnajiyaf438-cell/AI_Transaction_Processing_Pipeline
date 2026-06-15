@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Transaction Pipeline</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Backend + DevOps Assessment</p>
+          <h1>AI Transaction Processing Pipeline</h1>
+          <p class="subtitle">
+            Upload dirty financial CSVs, process them asynchronously, detect anomalies,
+            classify missing categories, and review structured summaries.
+          </p>
+        </div>
+        <div class="status-card">
+          <span class="pulse"></span>
+          <div>
+            <strong>System ready</strong>
+            <small>FastAPI + Celery + Redis + PostgreSQL</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel upload-panel">
+        <div>
+          <h2>Upload CSV</h2>
+          <p>Use the assessment schema: txn_id, date, merchant, amount, currency, status, category, account_id, notes.</p>
+        </div>
+        <form id="upload-form">
+          <input id="csv-file" type="file" accept=".csv,text/csv" required />
+          <button type="submit">Start Processing</button>
+        </form>
+        <p id="upload-message" class="message"></p>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="section-head">
+            <h2>Jobs</h2>
+            <select id="status-filter">
+              <option value="">All statuses</option>
+              <option value="pending">Pending</option>
+              <option value="processing">Processing</option>
+              <option value="completed">Completed</option>
+              <option value="failed">Failed</option>
+            </select>
+          </div>
+          <div id="jobs-list" class="jobs-list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="section-head">
+            <h2>Results</h2>
+            <button id="refresh-button" type="button">Refresh</button>
+          </div>
+          <div id="results" class="results-empty">Select a completed job to inspect results.</div>
+        </article>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
